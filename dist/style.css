@@ -1,0 +1,110 @@
+:root {
+  --border-color: #ccc;
+  --border: 1px solid var(--border-color);
+  --bg-input: #fff;
+  --bg-dropdown: #fafafa;
+  --scroll-color: #c4c4c4;
+  --selected-color: #808080;
+  --focus-color: #13249f;
+}
+
+.smv-select {
+  width: 100%;
+  font-family: Arial, sans-serif;
+  position: relative;
+  box-sizing: border-box;
+}
+.smv-select select {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.smv-select.open .smv-select__backdrop {
+  display: block;
+}
+.smv-select.open .smv-select__dropdown {
+  display: block;
+}
+.smv-select.open .smv-select__arrow {
+  transform: rotate(-180deg);
+}
+.smv-select.focus .smv-select__input {
+  border-color: var(--focus-color);
+}
+.smv-select__backdrop {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+.smv-select__input {
+  border: var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  padding: 0 20px;
+  height: 50px;
+  border-radius: 4px;
+  cursor: pointer;
+  background: var(--bg-input);
+}
+.smv-select__placeholder {
+  pointer-events: none;
+}
+.smv-select__arrow {
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+.smv-select__dropdown {
+  position: absolute;
+  z-index: -1;
+  top: calc(100% - 10px);
+  left: 0;
+  right: 0;
+  border: var(--border);
+  border-radius: 4px;
+  background: var(--bg-dropdown);
+  padding-top: 10px;
+  max-height: 195px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: none;
+}
+.smv-select__dropdown::-webkit-scrollbar {
+  width: 7px;
+  background-color: transparent;
+}
+.smv-select__dropdown::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.smv-select__dropdown::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+  background-color: var(--scroll-color);
+}
+.smv-select__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.smv-select__item {
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--border-color);
+  cursor: pointer;
+}
+.smv-select__item:last-child {
+  border-bottom-color: transparent;
+}
+.smv-select__item.selected {
+  background-color: bisque;
+}
+.smv-select__item:hover {
+  background-color: #eee;
+  cursor: pointer;
+  transition: 0.15s background-color ease-in;
+}

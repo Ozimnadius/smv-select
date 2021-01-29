@@ -1,0 +1,140 @@
+:root{
+  --border-color: #ccc;
+  --border: 1px solid var(--border-color);
+  --bg-input: #fff;
+  --bg-dropdown: #fafafa;
+  --scroll-color: #c4c4c4;
+  --selected-color: #808080;
+  --focus-color: #13249f;
+}
+
+.smv-select{
+  width: 100%;
+  font-family: Arial, sans-serif;
+  position: relative;
+  box-sizing: border-box;
+
+  select{
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &.open{
+    .smv-select{
+
+      &__backdrop{
+        display: block;
+      }
+
+      &__dropdown{
+        display: block;
+      }
+
+      &__arrow{
+        transform: rotate(-180deg);
+      }
+    }
+  }
+
+  &.focus{
+    .smv-select{
+      &__input{
+        border-color: var(--focus-color);
+      }
+    }
+  }
+
+  &__backdrop{
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+  }
+
+  &__input{
+    border: var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    padding: 0 20px;
+    height: 50px;
+    border-radius: 4px;
+    cursor: pointer;
+    background: var(--bg-input);
+  }
+
+  &__placeholder{
+    pointer-events: none;
+  }
+
+  &__arrow{
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+  }
+  
+  &__dropdown{
+    position: absolute;
+    z-index: -1;
+    top: calc(100% - 10px);
+    left: 0;
+    right: 0;
+    border: var(--border);
+    border-radius: 4px;
+    background: var(--bg-dropdown);
+    padding-top: 10px;
+    max-height: 195px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: none;
+
+    &::-webkit-scrollbar {
+      width: 7px;
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 2px;
+      background-color: var(--scroll-color);
+    }
+
+  }
+
+  &__list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item{
+    padding: 10px 20px;
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+
+    &:last-child{
+      border-bottom-color: transparent;
+    }
+
+    &.selected {
+      background-color: bisque;
+    }
+
+    &:hover {
+      background-color: #eee;
+      cursor: pointer;
+      transition: .15s background-color ease-in;
+    }
+
+  }
+
+}
