@@ -85,6 +85,7 @@ class Select {
                 this.select(id);
             case 'backdrop':
                 this.close();
+                this.focusout();
                 break;
         }
     }
@@ -125,7 +126,6 @@ class Select {
 
     close() {
         this.$main.classList.remove('open');
-        this.focusout();
     }
 
     select(id) {
